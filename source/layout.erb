@@ -2,39 +2,97 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge;chrome=1' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Rob Dimsdale<%= ' - ' + current_article.title unless current_article.nil? %></title>
+    <%= feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed" %>
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link href='//fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans' rel='stylesheet' type='text/css'>
+
+    <%= stylesheet_link_tag "application.css" %>
     <%= stylesheet_link_tag "highlighting" %>
 
-    <title>Blog Title<%= ' - ' + current_article.title unless current_article.nil? %></title>
-    <%= feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed" %>
+    <link rel="icon" type="image/png" href="/images/favicon-196x196.png" sizes="196x196">
+    <link rel="icon" type="image/png" href="/images/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+
   </head>
   <body>
+    <div id="wrap">
+      <div id="header">
+        <nav class="navbar navbar-default" role="navigation">
+          <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="row">
+              <div class="col-md-12">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <h2><a href="/">robdimsdale.com</a></h2>
+                </div>
 
-    <div id="main" role="main">
-      <%= yield %>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-collapse">
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="//robdimsdale.com/">Home</a></li>
+                    <li><a href="//robdimsdale.com/about-me/">About Me</a></li>
+                    <li><a href="//blog.robdimsdale.com/">Blog</a></li>
+                    <li><a href="//robdimsdale.com//projects/">Projects</a></li>
+                    <li><a href="//robdimsdale.com//resume/">Resume</a></li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">more <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="https://garage.dimsdale.net">Garage<i class="fa fa-lock"></i></a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div><!-- /.navbar-collapse -->
+              </div><!-- /.col-md-12 -->
+            </div><!-- /.row -->
+          </div>
+        </nav>
+      </div>
+      <div class="container page">
+
+        <div id="main" role="main">
+          <div class="row">
+            <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+              <h1><%= current_article.title unless current_article.nil? %></h1>
+
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <aside>
-      <h2>Recent Articles</h2>
-      <ol>
-        <% blog.articles[0...10].each do |article| %>
-          <li><%= link_to article.title, article %> <span><%= article.date.strftime('%b %e') %></span></li>
-        <% end %>
-      </ol>
+    <div id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <hr/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 col-md-6">
+            <p class="text-muted">&copy; 2014-2015 Rob Dimsdale</p>
+          </div>
+          <div class="col-xs-12 col-sm-8 col-md-6">
+            <p class="text-muted credit">Using <a href="http://fontawesome.io">fontawesome.io</a> by Dave Gandy</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <h2>Tags</h2>
-      <ol>
-        <% blog.tags.each do |tag, articles| %>
-          <li><%= link_to "#{tag} (#{articles.size})", tag_path(tag) %></li>
-        <% end %>
-      </ol>
-
-      <h2>By Year</h2>
-      <ol>
-        <% blog.articles.group_by {|a| a.date.year }.each do |year, articles| %>
-          <li><%= link_to "#{year} (#{articles.size})", blog_year_path(year) %></li>
-        <% end %>
-      </ol>
-    </aside>
   </body>
-</html>
+  </html>
