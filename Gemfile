@@ -8,6 +8,7 @@ gem "middleman-livereload", "~> 3.3.0"
 gem "middleman-syntax"
 gem 'middleman-gh-pages'
 gem "redcarpet"
+gem "nokogiri"
 
 # For feed.xml.builder
 gem "builder", "~> 3.0"
