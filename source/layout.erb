@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Rob Dimsdale<%= ' - ' + current_article.title unless current_article.nil? %></title>
+    <title><%= current_article.title + ' - ' unless current_article.nil? %> Rob Dimsdale</title>
     <%= feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed" %>
 
     <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
