@@ -2,7 +2,7 @@
 title: Middleman and Cloud Foundry
 date: 2015-01-11
 tags: middleman, cloud foundry
-public: false
+public: true
 ---
 
 [Middleman](https://middlemanapp.com/) is a static site generator; [Cloud Foundry](http://cloudfoundry.org/) is a Platform as a Service.
