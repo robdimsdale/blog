@@ -1,8 +1,8 @@
 ---
 title: Cloud Foundry, CloudFlare and custom domains
-date: 2015-01-21
+date: 2015-01-22
 tags: cloud foundry, cloudflare
-public: false
+public: true
 ---
 
 [CloudFlare](https://www.cloudflare.com) is a Content Deliery Network and distributed DNS system; [Cloud Foundry](http://cloudfoundry.org/) is a Platform as a Service.
@@ -11,7 +11,7 @@ Routing custom top-level domains (e.g. `my-custom-domain.com`) and custom subdom
 
 ### Hosting an application on a Cloud Foundry instance
 
-Sign up for an account with a Cloud Foundry provider (e.g. [Pivotal Web Services](https://run.pivotal.io)) and the install the [Cloud Foundry CLI](http://docs.cloudfoundry.org/devguide/installcf/).
+Sign up for an account with a Cloud Foundry provider (e.g. [Pivotal Web Services](https://run.pivotal.io)) and the [install the Cloud Foundry CLI](http://docs.cloudfoundry.org/devguide/installcf/).
 
 Using the CLI, login and target your org and space:
 
