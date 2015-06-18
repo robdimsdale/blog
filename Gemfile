@@ -9,6 +9,7 @@ gem "middleman-syntax"
 gem 'middleman-gh-pages'
 gem "redcarpet"
 gem "nokogiri"
+gem "therubyracer"
 
 # For feed.xml.builder
 gem "builder", "~> 3.0"
