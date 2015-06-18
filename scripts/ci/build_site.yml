@@ -1,0 +1,10 @@
+---
+platform: linux
+
+image: docker:///robdimsdale/blog
+
+inputs:
+- name: blog
+
+run:
+  path: blog/scripts/ci/build_site
