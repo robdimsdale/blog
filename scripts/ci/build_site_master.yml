@@ -4,7 +4,7 @@ platform: linux
 image: docker:///robdimsdale/blog
 
 inputs:
-- name: blog
+- name: blog-master
 
 run:
-  path: blog/scripts/ci/build_site
+  path: blog-master/scripts/ci/build_site
