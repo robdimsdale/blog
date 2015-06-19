@@ -15,14 +15,12 @@ resources:
     private_key: {{private-key}}
 
 jobs:
-- name: deploy-site-develop
+- name: build-deploy-site-develop
   plan:
   - get: blog-develop
     trigger: true
-  - task: build-site
-    file: blog-develop/scripts/ci/build_site_develop.yml
-  - task: deploy-site-develop
-    file: blog-develop/scripts/ci/deploy_site_develop.yml
+  - task: build-deploy-site-develop
+    file: blog-develop/scripts/ci/build_deploy_site_develop.yml
     config:
       params:
         CF_USER: {{cf-user}}
@@ -32,9 +30,16 @@ jobs:
         CF_APPLICATION: {{cf-application-develop}}
         STATIC_FILE_AUTH: {{static-file-auth-develop}}
 
-- name: build-site-master
+- name: build-deploy-site-master
   plan:
   - get: blog-master
     trigger: true
-  - task: build-site
-    file: blog-master/scripts/ci/build_site_master.yml
+  - task: build-deploy-site-master
+    file: blog-master/scripts/ci/build_deploy_site_master.yml
+    config:
+      params:
+        CF_USER: {{cf-user}}
+        CF_PASSWORD: {{cf-password}}
+        CF_ORG: {{cf-org-master}}
+        CF_SPACE: {{cf-space-master}}
+        CF_APPLICATION: {{cf-application-master}}

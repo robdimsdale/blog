@@ -7,4 +7,4 @@ inputs:
 - name: blog-master
 
 run:
-  path: blog-master/scripts/ci/build_site
+  path: blog-master/scripts/ci/build_deploy_site
