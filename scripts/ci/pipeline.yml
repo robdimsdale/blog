@@ -1,0 +1,28 @@
+---
+resources:
+- name: blog-develop
+  type: git
+  source:
+    uri: git@github.com:robdimsdale/blog
+    branch: develop
+
+- name: blog-master
+  type: git
+  source:
+    uri: git@github.com:robdimsdale/blog
+    branch: master
+
+jobs:
+- name: build-site-develop
+  plan:
+    - get: blog-develop
+      trigger: true
+    - task: build-site
+      file: blog-develop/scripts/ci/build_site.yml
+
+- name: build-site-master
+  plan:
+    - get: blog-master
+      trigger: true
+    - task: build-site
+      file: blog-develop/scripts/ci/build_site.yml
