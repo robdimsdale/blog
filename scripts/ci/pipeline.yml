@@ -21,17 +21,19 @@ jobs:
     trigger: true
   - task: build-site
     file: blog-develop/scripts/ci/build_site_develop.yml
-    params:
-      CF_USER: {{cf-user}}
-      CF_PASSWORD: {{cf-password}}
-      CF_ORG: {{cf-org-develop}}
-      CF_SPACE: {{cf-space-develop}}
-      CF_APPLICATION: {{cf-application-develop}}
-      STATIC_FILE_AUTH: {{static-file-auth-develop}}
+    config:
+      params:
+        CF_USER: {{cf-user}}
+        CF_PASSWORD: {{cf-password}}
+        CF_ORG: {{cf-org-develop}}
+        CF_SPACE: {{cf-space-develop}}
+        CF_APPLICATION: {{cf-application-develop}}
+        STATIC_FILE_AUTH: {{static-file-auth-develop}}
 
 - name: deploy-site-develop
   plan:
   - get: blog-develop
+    trigger: true
     passed: [build-site-develop]
   - task: deploy-site-develop
     file: blog-develop/scripts/ci/deploy_site_develop.yml
