@@ -9,5 +9,5 @@ BASE_DIR="$( cd $MY_DIR/../.. && pwd )"
 
 pushd ${BASE_DIR}
   bundle
-  bundle exec rake build
+  bundle exec middleman build --clean
 popd
