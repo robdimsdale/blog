@@ -5,12 +5,14 @@ resources:
   source:
     uri: git@github.com:robdimsdale/blog
     branch: develop
+    private_key: {{rmd-blog-private-key}}
 
 - name: blog-master
   type: git
   source:
     uri: git@github.com:robdimsdale/blog
     branch: master
+    private_key: {{rmd-blog-private-key}}
 
 jobs:
 - name: build-site-develop
