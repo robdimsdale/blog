@@ -1,0 +1,17 @@
+---
+platform: linux
+
+image: docker:///robdimsdale/blog
+
+inputs:
+- name: blog-develop
+
+run:
+  path: blog-develop/scripts/ci/deploy_site
+  params:
+    CF_USER: {{cf-user}}
+    CF_PASSWORD: {{cf-password}}
+    CF_ORG: {{cf-org-develop}}
+    CF_SPACE: {{cf-space-develop}}
+    CF_APPLICATION: {{cf-application-develop}}
+    STATIC_FILE_AUTH: {{static-file-auth-develop}}

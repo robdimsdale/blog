@@ -5,26 +5,33 @@ resources:
   source:
     uri: git@github.com:robdimsdale/blog
     branch: develop
-    private_key: {{rmd-blog-private-key}}
+    private_key: {{private-key}}
 
 - name: blog-master
   type: git
   source:
     uri: git@github.com:robdimsdale/blog
     branch: master
-    private_key: {{rmd-blog-private-key}}
+    private_key: {{private-key}}
 
 jobs:
 - name: build-site-develop
   plan:
-    - get: blog-develop
-      trigger: true
-    - task: build-site
-      file: blog-develop/scripts/ci/build_site_develop.yml
+  - get: blog-develop
+    trigger: true
+  - task: build-site
+    file: blog-develop/scripts/ci/build_site_develop.yml
+
+- name: deploy-site-develop
+  plan:
+  - get: blog-develop
+    passed: [build-site-develop]
+  - task: deploy-site-develop
+    file: blog-develop/scripts/ci/deploy_site_develop.yml
 
 - name: build-site-master
   plan:
-    - get: blog-master
-      trigger: true
-    - task: build-site
-      file: blog-master/scripts/ci/build_site_master.yml
+  - get: blog-master
+    trigger: true
+  - task: build-site
+    file: blog-master/scripts/ci/build_site_master.yml
