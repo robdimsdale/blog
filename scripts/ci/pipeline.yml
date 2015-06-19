@@ -15,18 +15,12 @@ resources:
     private_key: {{private-key}}
 
 jobs:
-- name: build-site-develop
+- name: deploy-site-develop
   plan:
   - get: blog-develop
     trigger: true
   - task: build-site
     file: blog-develop/scripts/ci/build_site_develop.yml
-
-- name: deploy-site-develop
-  plan:
-  - get: blog-develop
-    trigger: true
-    passed: [build-site-develop]
   - task: deploy-site-develop
     file: blog-develop/scripts/ci/deploy_site_develop.yml
     config:
