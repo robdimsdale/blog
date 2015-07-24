@@ -16,6 +16,7 @@ resources:
 
 jobs:
 - name: build-deploy-site-develop
+  serial: true
   plan:
   - get: blog-develop
     trigger: true
@@ -31,6 +32,7 @@ jobs:
         STATIC_FILE_AUTH: {{static-file-auth-develop}}
 
 - name: build-deploy-site-master
+  serial: true
   plan:
   - get: blog-master
     trigger: true
