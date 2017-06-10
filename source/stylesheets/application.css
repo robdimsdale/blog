@@ -109,3 +109,7 @@ body {
 #footer a {
   color: #005580;
 }
+
+div.highlight {
+  background-color: transparent;
+}
