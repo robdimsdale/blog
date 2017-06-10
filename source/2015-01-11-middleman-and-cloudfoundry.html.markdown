@@ -16,7 +16,7 @@ Serving static files is more efficient than running a Rack-enabled webserver, an
 
 ###Static-file buildpack
 
-Static files can be pushed to Cloud Foundry via the [static-file buildpack](https://github.com/cloudfoundry-incubator/staticfile-buildpack).
+Static files can be pushed to Cloud Foundry via the [static-file buildpack](https://github.com/cloudfoundry/staticfile-buildpack).
 
 1. Build the site:
 
@@ -30,7 +30,7 @@ Static files can be pushed to Cloud Foundry via the [static-file buildpack](http
     $ cf push middleman-site \
         -m 32M \
         -p build/ \
-        -b https://github.com/cloudfoundry-incubator/staticfile-buildpack.git
+        -b https://github.com/cloudfoundry/staticfile-buildpack.git
     ~~~
     The syntax is as follows:
 
