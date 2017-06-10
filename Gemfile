@@ -20,3 +20,6 @@ gem "builder", "~> 3.0"
 
 # For blog post summaries
 gem "nokogiri"
+
+# For execution of the middleman CLI (it needs a Javascript runtime)
+gem "therubyracer"
