@@ -27,12 +27,18 @@ Static files can be pushed to Cloud Foundry via the [static-file buildpack](http
 1. Push the site:
 
     ~~~
-    $ cf push middleman-site -m 64M -p build/ -b https://github.com/cloudfoundry-incubator/staticfile-buildpack.git
+    $ cf push middleman-site \
+        -m 32M \
+        -p build/ \
+        -b https://github.com/cloudfoundry-incubator/staticfile-buildpack.git
     ~~~
     The syntax is as follows:
 
     ~~~
-    cf push <app-name> -m <memory-limit> -p <app-directory> -b <custom-buildpack-url>
+    $ cf push <app-name> \
+        -m <memory-limit> \
+        -p <app-directory> \
+        -b <custom-buildpack-url>
     ~~~
 
 ###Rack-enabled webserver
