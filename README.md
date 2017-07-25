@@ -1,4 +1,6 @@
 Blog
 ====
 
-Personal blog, using middleman. Located at https://blog.robdimsdale.com
+**DEPRECATED**
+
+Please see https://github.com/robdimsdale/dimsdale-website instead.
